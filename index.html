@@ -282,10 +282,6 @@ function doc(k){
   // more in stage
   const same=C.map((x,i)=>[x,i]).filter(([x,i])=>x.stage===c.stage&&i!=k);
   if(same.length){const m=el('div','more');m.append(el('h3',null,'More in '+c.stage.replace(/^\d+\. /,'')));const ul=el('ul');same.forEach(([x])=>{const li=el('li');li.append(link('#'+x.slug,x.n));ul.append(li)});m.append(ul);d.append(m)}
-  const pg=el('nav','pager');pg.setAttribute('aria-label','Previous and next topics');
-  const k2=+k;if(k2>0){const a=link('#'+C[k2-1].slug,'');a.append(el('span',null,'Previous'),C[k2-1].n);pg.append(a)}else pg.append(el('span'));
-  if(k2<C.length-1){const a=link('#'+C[k2+1].slug,'');a.style.textAlign='right';a.append(el('span',null,'Next'),C[k2+1].n);pg.append(a)}
-  d.append(pg);
   window.scrollTo(0,0);d.querySelector('h1').setAttribute('tabindex','-1');d.querySelector('h1').focus({preventScroll:true});
 }
 function index(gapsOnly){
